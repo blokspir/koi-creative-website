@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>madewithkoi — We Swim Deep into Digital Creativity</title>
 <meta name="description" content="madewithkoi.com — a creative digital agency specializing in Digital Media, Social Media, Advertising, Web Development, and Apps Development." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -749,24 +751,35 @@
       this.wanderT = Math.random()*1000;
     }
     update(){
-      this.swimCycle += 0.08;
-      this.wanderT += 0.004;
+      const isDesktop = width >= 768;
+      const speedMul = isDesktop ? 0.45 : 0.85;
+      this.swimCycle += 0.05;
+      this.wanderT += 0.003;
       let tx, ty;
       const headDx = mouse.x - this.spine[0].x, headDy = mouse.y - this.spine[0].y;
       const mouseDist = Math.hypot(headDx, headDy);
-      if (mouse.active && !this.reachedMouse) {
+      // Cooldown: after reaching the mouse, ignore it for 7–10s
+      if (this.cooldownUntil && performance.now() < this.cooldownUntil) {
+        // forced wander
+      } else if (mouse.active && !this.reachedMouse) {
         tx = mouse.x; ty = mouse.y;
-        if (mouseDist < 40*this.scale) this.reachedMouse = true;
-      } else {
+        if (mouseDist < 40*this.scale) {
+          this.reachedMouse = true;
+          this.cooldownUntil = performance.now() + 7000 + Math.random()*3000;
+        }
+      }
+      if (tx === undefined) {
         this.wanderTimer--;
         if (this.wanderTimer <= 0 ||
             Math.hypot(this.wanderTarget.x-this.spine[0].x, this.wanderTarget.y-this.spine[0].y) < 60) {
           const margin = 80;
           this.wanderTarget.x = margin + Math.random()*(width - margin*2);
           this.wanderTarget.y = margin + Math.random()*(height - margin*2);
-          this.wanderTimer = 120 + Math.random()*180;
+          this.wanderTimer = 180 + Math.random()*240;
         }
-        if (mouse.active && this.reachedMouse && mouseDist > 200*this.scale) {
+        // After cooldown ends, allow re-engagement once cursor moves away & back
+        if (this.cooldownUntil && performance.now() >= this.cooldownUntil) {
+          this.cooldownUntil = 0;
           this.reachedMouse = false;
         }
         tx = this.wanderTarget.x; ty = this.wanderTarget.y;
@@ -777,10 +790,10 @@
       let diff = target - this.angle;
       while(diff>Math.PI) diff-=Math.PI*2;
       while(diff<-Math.PI) diff+=Math.PI*2;
-      this.angle += diff*0.03;
-      let baseSpeed = Math.min(dist*0.015, 3*this.scale);
+      this.angle += diff*0.025;
+      let baseSpeed = Math.min(dist*0.012, 2*this.scale);
       const stroke = Math.sin(this.swimCycle)*0.5+0.5;
-      let speed = baseSpeed + stroke*1.5*this.scale;
+      let speed = (baseSpeed + stroke*1.0*this.scale) * speedMul;
       if (dist<20) speed *= dist/20;
       this.x += Math.cos(this.angle)*speed;
       this.y += Math.sin(this.angle)*speed;
@@ -935,11 +948,11 @@
   });
 
   function animate(){
-    // soft warm water bg gradient
+    // warmer, deeper water gradient — darker so the white tails stay visible
     const bg = ctx.createRadialGradient(width*0.5, height*0.4, 0, width*0.5, height*0.4, Math.max(width,height));
-    bg.addColorStop(0, '#fdf8ec');
-    bg.addColorStop(0.6, '#f4efe6');
-    bg.addColorStop(1, '#e9e1cf');
+    bg.addColorStop(0, '#e8dcc2');
+    bg.addColorStop(0.55, '#d4c4a3');
+    bg.addColorStop(1, '#a8946d');
     ctx.fillStyle = bg;
     ctx.fillRect(0,0,width,height);
 
