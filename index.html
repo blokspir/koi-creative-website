@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Koi Creative — We Swim Deep into Digital Creativity</title>
+<title>Koi Creative — Swim Deep into Digital Creativity</title>
 <meta name="description" content="Koi Creative — a creative digital agency specializing in Digital Media, Social Media, Advertising, Web Development, and Apps Development." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,66 +170,50 @@
   }
   .section-intro { max-width: 38ch; color: var(--ink-soft); font-size: 1.05rem; }
 
-  /* ------------- MANIFESTO ------------- */
-  .manifesto { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .manifesto-grid { display:grid; grid-template-columns: 1.2fr 1fr; gap:80px; align-items:center; }
-  .manifesto h2 { font-size: clamp(2rem, 4.5vw, 3.6rem); margin-bottom: 28px; }
-  .manifesto h2 .o { color: var(--orange); }
-  .manifesto p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 18px; }
-  .pillars { display:grid; grid-template-columns: 1fr; gap: 20px; }
-  .pillar {
-    padding: 28px; border: 1px solid var(--line); border-radius: 20px;
-    background: rgba(255,255,255,0.5); backdrop-filter: blur(6px);
-    transition: transform .4s, box-shadow .4s, border-color .4s;
-  }
-  .pillar:hover { transform: translateX(8px); border-color: var(--orange); box-shadow: 0 16px 40px rgba(255,74,34,0.08); }
-  .pillar .num { font-family:'Syne',sans-serif; font-weight:800; color: var(--orange); font-size: 0.95rem; margin-bottom: 8px; }
-  .pillar h4 { font-size: 1.3rem; margin-bottom: 6px; }
-  .pillar p { font-size: 0.95rem; color: var(--ink-soft); margin:0; }
+  /* ------------- ABOUT ------------- */
+  .about { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center; }
+  .about-img { border-radius: 24px; overflow: hidden; aspect-ratio: 16/9; }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .about-img:hover img { transform: scale(1.03); }
+  .about h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; }
+  .about h2 .o { color: var(--orange); }
+  .about p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 16px; }
+  .about-stats { display: flex; gap: 40px; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .about-stat .num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.5rem; color: var(--orange); }
+  .about-stat .label { font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; }
 
   /* ------------- SERVICES ------------- */
   .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
   }
   .service {
-    position: relative; padding: 44px 32px; border-radius: 24px;
+    position: relative; border-radius: 24px;
     background: var(--white); border: 1px solid var(--line);
     overflow: hidden; cursor: pointer;
-    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, color .4s;
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s;
   }
-  .service::before {
-    content:''; position:absolute; inset:0; z-index:0;
-    background: linear-gradient(135deg, var(--orange) 0%, #ff7240 100%);
-    transform: translateY(100%); transition: transform .5s cubic-bezier(.2,.8,.2,1);
-  }
-  .service:hover::before { transform: translateY(0); }
-  .service:hover { color: var(--white); transform: translateY(-8px); box-shadow: 0 28px 60px rgba(255,74,34,0.25); }
-  .service > * { position: relative; z-index: 1; }
+  .service:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(0,0,0,0.12); }
+  .service-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+  .service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .service:hover .service-img img { transform: scale(1.05); }
+  .service-content { padding: 28px 32px 32px; }
   .service .s-num {
-    font-family:'Syne',sans-serif; font-weight: 700; font-size: 0.85rem;
-    color: var(--orange); margin-bottom: 60px;
-    display: inline-block; padding: 6px 12px; border:1px solid var(--orange); border-radius: 999px;
-    transition: color .4s, border-color .4s;
+    font-family:'Syne',sans-serif; font-weight: 700; font-size: 0.75rem;
+    color: var(--orange); margin-bottom: 16px;
+    display: inline-block; padding: 5px 10px; border:1px solid var(--orange); border-radius: 999px;
   }
-  .service:hover .s-num { color: var(--white); border-color: rgba(255,255,255,0.5); }
-  .service .icon {
-    width: 56px; height: 56px; margin-bottom: 24px;
-    display:flex; align-items:center; justify-content:center;
-    background: var(--bg-2); border-radius: 16px;
-    transition: background .4s, transform .5s;
+  .service h3 { font-size: 1.4rem; margin-bottom: 12px; }
+  .service p { font-size: 0.92rem; color: var(--ink-soft); }
+  .service-cta {
+    position: relative; padding: 32px;
+    background: linear-gradient(135deg, var(--ink) 0%, #1a1a1a 100%);
+    color: #f3ede0; border-radius: 24px; border: none;
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .service:hover .icon { background: rgba(255,255,255,0.25); transform: rotate(-8deg) scale(1.05); }
-  .service .icon svg { width: 26px; height: 26px; stroke: var(--ink); transition: stroke .4s; }
-  .service:hover .icon svg { stroke: var(--white); }
-  .service h3 { font-size: 1.55rem; margin-bottom: 14px; }
-  .service p { font-size: 0.95rem; color: var(--ink-soft); transition: color .4s; }
-  .service:hover p { color: rgba(255,255,255,0.9); }
-  .service .arrow-c {
-    margin-top: 30px; display:inline-flex; align-items:center; gap:8px;
-    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  }
-  .service .arrow-c svg { width:16px; height:16px; transition: transform .35s; }
-  .service:hover .arrow-c svg { transform: translateX(6px); }
+  .service-cta h3 { color: #fff; font-size: 1.6rem; margin-bottom: 12px; }
+  .service-cta p { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px; }
+  .service-cta .btn { align-self: flex-start; }
 
   /* ------------- WORKS ------------- */
   .works { background: #1a1a1a; color: #f3ede0; }
@@ -283,24 +267,29 @@
   .w4 .img-bg { background: url('images/tide.png') center/cover no-repeat; }
   .w5 .img-bg { background: url('images/hira.png') center/cover no-repeat; }
 
-  /* ------------- WHY KOI ------------- */
-  .why { background: var(--bg); }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
-  .why-card {
-    padding: 48px 36px; border-radius: 24px;
-    background: var(--white); border:1px solid var(--line);
-    position: relative; overflow: hidden;
-    transition: transform .5s, box-shadow .5s;
+  /* ------------- TEAM ------------- */
+  .team { background: var(--bg); }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .team-card {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    transition: transform .4s, box-shadow .4s;
   }
-  .why-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
-  .why-card .big-num {
-    font-family:'Syne',sans-serif; font-weight: 800;
-    font-size: 6rem; line-height: 1;
-    color: var(--orange); opacity: 0.12;
-    position: absolute; top: 20px; right: 24px;
+  .team-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,0,0,0.08); }
+  .team-avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 3px solid var(--bg-2);
   }
-  .why-card h3 { font-size: 1.7rem; margin-bottom: 16px; position: relative; }
-  .why-card p { color: var(--ink-soft); font-size: 0.98rem; position: relative; }
+  .team-avatar img { width: 115%; height: 115%; object-fit: cover; margin: -7.5% 0 0 -7.5%; }
+  .team-card h4 { font-size: 1.25rem; margin-bottom: 4px; }
+  .team-card .role { font-size: 0.85rem; color: var(--orange); font-weight: 500; margin-bottom: 12px; }
+  .team-card p { font-size: 0.88rem; color: var(--ink-soft); font-family: 'Inter', system-ui, sans-serif; }
 
   /* ------------- CONTACT ------------- */
   .contact { background: var(--ink); color: var(--bg); }
@@ -382,9 +371,10 @@
 
   /* ------------- RESPONSIVE ------------- */
   @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .why-grid { grid-template-columns: 1fr; }
-    .manifesto-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .about-img { order: -1; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
   @media (max-width: 720px) {
@@ -395,6 +385,9 @@
     .hero { padding-top: 110px; }
     .hero-meta { left: 20px; right: 20px; bottom: 20px; }
     .services-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .team-avatar { width: 80px; height: 80px; }
+    .about-stats { flex-wrap: wrap; gap: 24px; }
     .work-card { flex: 0 0 85vw; height: 460px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -409,7 +402,7 @@
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#works">Works</a>
-    <a href="#why">Why KOI</a>
+    <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </div>
   <a href="#contact" class="nav-cta">Start a Project →</a>
@@ -421,8 +414,8 @@
   <canvas id="koiCanvas"></canvas>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <span class="eyebrow"><span class="pip"></span>Digital Creative Agency · Est. Tokyo Spirit, Jakarta Roots</span>
-    <h1>We Swim Deep<br/>into <span class="accent">Digital</span><br/><span class="gold">Creativity.</span></h1>
+    <span class="eyebrow"><span class="pip"></span>Digital Creative Agency · Est. 2025 from Jakarta</span>
+    <h1>Swim Deep<br/>into <span class="accent">Digital</span><br/><span class="gold">Creativity.</span></h1>
     <p class="sub">Bold brands. Smart code. Stories that drift across feeds and stop the scroll. We help you out-swim the algorithm — and look stupid good doing it.</p>
     <div class="hero-cta-row">
       <a href="#contact" class="btn btn-primary">Let's Scale Together <span class="arrow">→</span></a>
@@ -435,19 +428,22 @@
   </div>
 </header>
 
-<!-- ============ MANIFESTO ============ -->
-<section class="manifesto" id="manifesto">
-  <div class="container manifesto-grid">
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about-grid">
     <div class="reveal">
-      <span class="section-tag">The KOI Philosophy</span>
-      <h2 class="section-title">Small pond, ocean, <span class="o">it doesn't matter.</span> A koi grows to fit the water it's given.</h2>
-      <p>Legend has it a koi that swims upstream past the Dragon Gate becomes a dragon. We're not making that up — but we are making it our operating manual.</p>
-      <p>Every brand we touch starts somewhere finite: a feed, a niche, a city block. Our job is to expand the pond. We adapt to your market, swim against the boring current, and stay around long enough to outlive trend cycles. That's it. That's the agency.</p>
+      <span class="section-tag">About Koi Creative</span>
+      <h2>We help brands <span class="o">grow bigger</span> than where they started.</h2>
+      <p>Koi Creative is a full-service digital agency based in Jakarta. We build brands that scale — through sharp creative, strategic advertising, and technology that actually works.</p>
+      <p>From social media management to custom web and app development, we handle the entire digital stack so you can focus on running your business.</p>
+      <div class="about-stats">
+        <div class="about-stat"><div class="num">50+</div><div class="label">Projects Delivered</div></div>
+        <div class="about-stat"><div class="num">4.5×</div><div class="label">Avg. Client ROAS</div></div>
+        <div class="about-stat"><div class="num">100%</div><div class="label">In-House Team</div></div>
+      </div>
     </div>
-    <div class="pillars reveal">
-      <div class="pillar"><div class="num">01 / ADAPTABILITY</div><h4>We flow to fit the brief.</h4><p>Strategy that reshapes itself when the market moves. No template thinking.</p></div>
-      <div class="pillar"><div class="num">02 / LONGEVITY</div><h4>Built to outlast the algorithm.</h4><p>Brands designed for compounding — not just a quarter of paid spikes.</p></div>
-      <div class="pillar"><div class="num">03 / FLOW</div><h4>Upstream is our default direction.</h4><p>If everyone's doing it, we're probably doing the opposite — on purpose.</p></div>
+    <div class="about-img reveal">
+      <img src="images/studio-workspace.png" alt="Koi Creative workspace">
     </div>
   </div>
 </section>
@@ -457,58 +453,62 @@
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <span class="section-tag">What We Do</span>
-        <h2 class="section-title">Five disciplines. <br/>One ridiculously sharp team.</h2>
+        <span class="section-tag">Our Services</span>
+        <h2 class="section-title">Everything your brand needs to grow online.</h2>
       </div>
-      <p class="section-intro">From the first frame of a TikTok to the last line of production code — we own the whole stack of your brand's digital life.</p>
+      <p class="section-intro">From content creation to custom apps — we handle the full digital stack so you can focus on your business.</p>
     </div>
 
     <div class="services-grid">
       <article class="service reveal">
-        <span class="s-num">01</span>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M10 13l3 2-3 2v-4z"/></svg></div>
-        <h3>Digital Media</h3>
-        <p>Content that actually performs. Video, photo, motion, copy — engineered for thumbs that scroll fast and standards that don't bend.</p>
-        <span class="arrow-c">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <div class="service-img"><img src="images/service-digital-media.png" alt="Digital Media Production"></div>
+        <div class="service-content">
+          <span class="s-num">01</span>
+          <h3>Digital Media</h3>
+          <p>Video production, photography, motion graphics, and copywriting. Content engineered for engagement and conversions.</p>
+        </div>
       </article>
 
       <article class="service reveal">
-        <span class="s-num">02</span>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-        <h3>Social Media</h3>
-        <p>We run feeds, not vanity dashboards. Community-first content, viral-ready hooks, and the kind of consistency that compounds into culture.</p>
-        <span class="arrow-c">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <div class="service-img"><img src="images/service-social-media.png" alt="Social Media Management"></div>
+        <div class="service-content">
+          <span class="s-num">02</span>
+          <h3>Social Media</h3>
+          <p>Full account management, content calendars, community engagement, and growth strategies that build real audiences.</p>
+        </div>
       </article>
 
       <article class="service reveal">
-        <span class="s-num">03</span>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7v16l-18-7v-2z"/><path d="M11 14v6"/></svg></div>
-        <h3>Strategic Advertising</h3>
-        <p>Paid that pulls weight. Funnels that actually funnel. Creative tested against real money, real audiences, real outcomes — not vibes.</p>
-        <span class="arrow-c">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <div class="service-img"><img src="images/service-advertising.png" alt="Digital Advertising"></div>
+        <div class="service-content">
+          <span class="s-num">03</span>
+          <h3>Digital Advertising</h3>
+          <p>Meta, Google, TikTok ads. Full-funnel campaigns with creative testing, audience targeting, and transparent reporting.</p>
+        </div>
       </article>
 
       <article class="service reveal">
-        <span class="s-num">04</span>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <h3>Web Development</h3>
-        <p>Sites that load like a whisper and convert like a closer. Hand-built, headless-ready, SEO-armored. Pixels and performance, same breath.</p>
-        <span class="arrow-c">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <div class="service-img"><img src="images/service-web.png" alt="Web Development"></div>
+        <div class="service-content">
+          <span class="s-num">04</span>
+          <h3>Web Development</h3>
+          <p>Fast, SEO-optimized websites that convert. From landing pages to full e-commerce platforms, built to perform.</p>
+        </div>
       </article>
 
       <article class="service reveal">
-        <span class="s-num">05</span>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-        <h3>Apps Development</h3>
-        <p>iOS, Android, cross-platform — apps people actually open twice. UX-led, ship-disciplined, scalable enough for your Series B dreams.</p>
-        <span class="arrow-c">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <div class="service-img"><img src="images/service-apps.png" alt="Apps Development"></div>
+        <div class="service-content">
+          <span class="s-num">05</span>
+          <h3>Apps Development</h3>
+          <p>iOS, Android, and cross-platform apps. Clean UX, scalable architecture, built for your business needs.</p>
+        </div>
       </article>
 
-      <article class="service reveal" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a); color:#f3ede0; border-color:transparent;">
-        <span class="s-num" style="color:var(--gold); border-color:var(--gold);">+</span>
-        <h3 style="color:#fff; margin-top:60px;">Need it all under one roof?</h3>
-        <p style="color:rgba(255,255,255,0.7);">We build full-stack growth engines. One team, one Slack, zero finger-pointing.</p>
-        <a href="#contact" class="arrow-c" style="color: var(--gold);">Let's build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <article class="service-cta reveal">
+        <h3>Need the full package?</h3>
+        <p>We offer integrated solutions combining all services under one team. No coordination headaches, no finger-pointing.</p>
+        <a href="#contact" class="btn btn-primary">Get a Custom Quote <span class="arrow">→</span></a>
       </article>
     </div>
   </div>
@@ -544,31 +544,40 @@
   </div>
 </section>
 
-<!-- ============ WHY KOI ============ -->
-<section class="why" id="why">
+<!-- ============ TEAM ============ -->
+<section class="team" id="team">
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <span class="section-tag">Why KOI</span>
-        <h2 class="section-title">Three principles. <br/>Zero compromises.</h2>
+        <span class="section-tag">The Team</span>
+        <h2 class="section-title">Small team. Big results.</h2>
       </div>
-      <p class="section-intro">A koi grows to the size of its container. Give us scope, we'll give you scale. Here's the rhythm we move to.</p>
+      <p class="section-intro">We are a team of professionals who are passionate about what we do. Get direct access to the people doing the work.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <span class="big-num">01</span>
-        <h3>Adaptability</h3>
-        <p>Your market moves weekly. So do we. Strategies built to evolve, not to be filed away after the kickoff deck. We rewrite the playbook the moment the playbook stops working.</p>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar"><img src="images/team-alamanda.png" alt="Alamanda"></div>
+        <h4>Alamanda</h4>
+        <div class="role">Creative Director</div>
+        <p>Leads creative vision across all projects. 8+ years in brand and campaign design.</p>
       </div>
-      <div class="why-card reveal">
-        <span class="big-num">02</span>
-        <h3>Longevity</h3>
-        <p>Trends rent. Brands own. We're here for the long swim — building digital assets that compound for years, not creative that peaks on Tuesday and dies by Friday.</p>
+      <div class="team-card reveal">
+        <div class="team-avatar"><img src="images/team-najmi.png" alt="Najmi"></div>
+        <h4>Najmi</h4>
+        <div class="role">Tech Lead</div>
+        <p>Architects our web and app solutions. Full-stack engineer with startup DNA.</p>
       </div>
-      <div class="why-card reveal">
-        <span class="big-num">03</span>
-        <h3>Flow</h3>
-        <p>The current is loud. Quiet, intentional craft wins. We move with focus, ship without drama, and let the work do the loud part on your behalf.</p>
+      <div class="team-card reveal">
+        <div class="team-avatar"><img src="images/team-ayu.png" alt="Ayu"></div>
+        <h4>Ayu</h4>
+        <div class="role">Strategy Lead</div>
+        <p>Runs advertising and growth strategy. Data-driven with a creative edge.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar"><img src="images/team-gary.png" alt="Gary"></div>
+        <h4>Gary</h4>
+        <div class="role">Design Lead</div>
+        <p>Crafts UI/UX and visual systems. Obsessed with pixels and user flows.</p>
       </div>
     </div>
   </div>
@@ -624,9 +633,10 @@
     <div class="footer-col">
       <h5>Studio</h5>
       <ul>
+        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#works">Works</a></li>
-        <li><a href="#why">Why KOI</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
